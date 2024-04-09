@@ -17,6 +17,6 @@ public class TodosTest {
 
         var newTodo = service.create(todo);
 
-        assertThat(newTodo.title()).isEqualTo(todo.title());
+        assertThat(newTodo.userId()).isEqualTo(todo.userId());
     }
 }
