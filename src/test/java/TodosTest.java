@@ -17,6 +17,6 @@ public class TodosTest {
 
         var newTodo = service.create(todo);
 
-        assertThat(newTodo.getTitle()).isEqualTo(todo.getTitle());
+        assertThat(newTodo.title()).isEqualTo(todo.title());
     }
 }
