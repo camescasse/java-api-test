@@ -1,19 +1,19 @@
 package org.example.services;
 
 import org.example.models.Post;
+
 import java.util.List;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
 public class PostService {
-    private PropertiesReader reader;
-    private String endpoint;
-    private String host;
+    private final String endpoint;
+    private final String host;
 
     public PostService() {
-        this.reader = new PropertiesReader();
         this.endpoint = "/posts";
+        var reader = new PropertiesReader();
         this.host = reader.getProperty("HOST_URL");
     }
 

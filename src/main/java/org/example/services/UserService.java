@@ -8,13 +8,12 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
 public class UserService {
-    private PropertiesReader reader;
-    private String endpoint;
-    private String host;
+    private final String endpoint;
+    private final String host;
 
     public UserService() {
-        this.reader = new PropertiesReader();
         this.endpoint = "/users";
+        var reader = new PropertiesReader();
         this.host = reader.getProperty("HOST_URL");
     }
 
