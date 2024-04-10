@@ -1,28 +1,30 @@
 package org.example.services;
 
 import org.example.models.Todo;
+
 import java.util.List;
-import static io.restassured.RestAssured.*;
+
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
 
 public class TodoService {
-    private PropertiesReader reader;
-    private String endpoint;
-    private String host;
+    private final String endpoint;
+    private final String host;
 
     public TodoService() {
-        this.reader = new PropertiesReader();
         this.endpoint = "/todos";
+        var reader = new PropertiesReader();
         this.host = reader.getProperty("HOST_URL");
     }
 
-    public List<Todo> getAll(){
+    public List<Todo> getAll() {
         return get(host + endpoint)
                 .getBody()
                 .jsonPath()
                 .getList(".", Todo.class);
     }
 
-    public Todo create(Todo todo){
+    public Todo create(Todo todo) {
         return given()
                 .contentType("application/json")
                 .body(todo)
