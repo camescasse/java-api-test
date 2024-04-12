@@ -8,17 +8,16 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
 public class TodoService {
-    private final String endpoint;
-    private final String host;
+    private final String url;
 
     public TodoService() {
-        this.endpoint = "/todos";
         var reader = new PropertiesReader();
-        this.host = reader.getProperty("HOST_URL");
+        var host = reader.getProperty("HOST");
+        url = host + "/todos";
     }
 
     public List<Todo> getAll() {
-        return get(host + endpoint)
+        return get(url)
                 .getBody()
                 .jsonPath()
                 .getList(".", Todo.class);
@@ -28,9 +27,10 @@ public class TodoService {
         return given()
                 .contentType("application/json")
                 .body(todo)
-                .post(host + endpoint)
+                .post(url)
                 .getBody()
                 .jsonPath()
                 .getObject(".", Todo.class);
     }
+
 }
