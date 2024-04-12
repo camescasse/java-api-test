@@ -18,3 +18,4 @@ API Automation project written in Java, using RestAssured and TestNG for the web
 | Key     | Description                                                                      |
 |---------|----------------------------------------------------------------------------------|
 | `HOST`    | Starting part of the typicode website                                            |
+=======
