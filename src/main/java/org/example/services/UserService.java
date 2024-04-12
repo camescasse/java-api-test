@@ -8,17 +8,16 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
 public class UserService {
-    private final String endpoint;
-    private final String host;
+    private final String url;
 
     public UserService() {
-        this.endpoint = "/users";
         var reader = new PropertiesReader();
-        this.host = reader.getProperty("HOST_URL");
+        var host = reader.getProperty("HOST");
+        url = host + "/users";
     }
 
     public List<User> getAll() {
-        return get(host + endpoint)
+        return get(url)
                 .getBody()
                 .jsonPath()
                 .getList(".", User.class);
@@ -28,9 +27,10 @@ public class UserService {
         return given()
                 .contentType("application/json")
                 .body(user)
-                .post(host + endpoint)
+                .post(url)
                 .getBody()
                 .jsonPath()
                 .getObject(".", User.class);
     }
+
 }

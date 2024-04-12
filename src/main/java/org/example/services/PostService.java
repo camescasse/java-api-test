@@ -8,17 +8,16 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
 public class PostService {
-    private final String endpoint;
-    private final String host;
+    private final String url;
 
     public PostService() {
-        this.endpoint = "/posts";
         var reader = new PropertiesReader();
-        this.host = reader.getProperty("HOST_URL");
+        var host = reader.getProperty("HOST");
+        url = host + "/posts";
     }
 
     public List<Post> getAll() {
-        return get(host + endpoint)
+        return get(url)
                 .getBody()
                 .jsonPath()
                 .getList(".", Post.class);
@@ -28,9 +27,10 @@ public class PostService {
         return given()
                 .contentType("application/json")
                 .body(post)
-                .post(host + endpoint)
+                .post(url)
                 .getBody()
                 .jsonPath()
                 .getObject(".", Post.class);
     }
+
 }
