@@ -23,4 +23,8 @@ public class TodoService {
         return client.post(todo);
     }
 
+    public int delete(int id) {
+        return client.delete(id);
+    }
+
 }

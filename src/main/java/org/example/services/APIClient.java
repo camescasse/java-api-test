@@ -40,4 +40,10 @@ public class APIClient<T> {
                 .jsonPath()
                 .getObject(".", type);
     }
+
+    public int delete(int id) {
+        return given()
+                .delete(url + "/" + id).getStatusCode();
+    }
+
 }

@@ -23,4 +23,8 @@ public class PostService {
         return client.post(post);
     }
 
+    public int delete(int id) {
+        return client.delete(id);
+    }
+
 }
