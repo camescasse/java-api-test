@@ -15,6 +15,10 @@ public class TodoService {
         return client.getAll();
     }
 
+    public Todo getById(int id) {
+        return client.getById(id);
+    }
+
     public Todo create(Todo todo) {
         return client.post(todo);
     }

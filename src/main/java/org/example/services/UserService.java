@@ -15,6 +15,10 @@ public class UserService {
         return client.getAll();
     }
 
+    public User getById(int id) {
+        return client.getById(id);
+    }
+
     public User create(User user) {
         return client.post(user);
     }

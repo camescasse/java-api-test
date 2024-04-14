@@ -12,6 +12,12 @@ public class PostsTest {
     }
 
     @Test
+    public void getById_Users_ReturnsUser() {
+        var service = new PostService();
+        assertThat(service.getById(1)).isNotNull();
+    }
+
+    @Test
     public void post_Posts_returnsCreated() {
         var service = new PostService();
         var post = new Post(25, 101, "mi primer post", "final");

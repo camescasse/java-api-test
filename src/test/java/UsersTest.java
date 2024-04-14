@@ -1,4 +1,3 @@
-import com.github.javafaker.Faker;
 import org.example.models.Address;
 import org.example.models.Company;
 import org.example.models.Geo;
@@ -17,31 +16,26 @@ public class UsersTest {
     }
 
     @Test
+    public void getById_Users_ReturnsUser() {
+        var service = new UserService();
+        assertThat(service.getById(1)).isNotNull();
+    }
+
+    @Test
     public void post_Users_ReturnsCreated() {
         var service = new UserService();
-        var faker = new Faker();
 
-        var geo = new Geo(
-                faker.address().latitude(),
-                faker.address().longitude());
-        var address = new Address(
-                faker.address().streetName(),
-                faker.address().buildingNumber(),
-                faker.address().city(),
-                faker.address().zipCode(),
-                geo);
-        var company = new Company(
-                faker.company().name(),
-                faker.company().catchPhrase(),
-                faker.company().bs());
+        var geo = new Geo("-4.5956887", "-138.76742");
+        var address = new Address("Tina Prairie", "95772", "Alphonse", "84683", geo);
+        var company = new Company("Sanford", "Programmable group", "streamline action-items");
         var user = new User(
                 11,
-                faker.name().fullName(),
-                faker.funnyName().name(),
-                faker.pokemon().name() + "@gmail.com",
+                "Bill Cartwright",
+                "cart11",
+                "cart11@gmail.com",
                 address,
-                faker.phoneNumber().cellPhone(),
-                faker.dragonBall().character() + ".com",
+                "1-477-445-5187",
+                "cart11.com",
                 company);
 
         var newUser = service.create(user);
