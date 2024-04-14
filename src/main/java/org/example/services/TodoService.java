@@ -12,11 +12,11 @@ public class TodoService {
     }
 
     public List<Todo> getAll() {
-        return client.getCall();
+        return client.getAll();
     }
 
     public Todo create(Todo todo) {
-        return client.postCall(todo);
+        return client.post(todo);
     }
 
 }
