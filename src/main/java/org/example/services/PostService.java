@@ -15,6 +15,10 @@ public class PostService {
         return client.getAll();
     }
 
+    public Post getById(int id) {
+        return client.getById(id);
+    }
+
     public Post create(Post post) {
         return client.post(post);
     }
