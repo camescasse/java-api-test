@@ -4,33 +4,19 @@ import org.example.models.User;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.get;
-import static io.restassured.RestAssured.given;
-
 public class UserService {
-    private final String url;
+    private final APIClient<User> client;
 
     public UserService() {
-        var reader = new PropertiesReader();
-        var host = reader.getProperty("HOST");
-        url = host + "/users";
+        client = new APIClient<>("/users", User.class);
     }
 
     public List<User> getAll() {
-        return get(url)
-                .getBody()
-                .jsonPath()
-                .getList(".", User.class);
+        return client.getCall();
     }
 
     public User create(User user) {
-        return given()
-                .contentType("application/json")
-                .body(user)
-                .post(url)
-                .getBody()
-                .jsonPath()
-                .getObject(".", User.class);
+        return client.postCall(user);
     }
 
 }
