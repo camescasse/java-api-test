@@ -5,22 +5,18 @@ import org.example.models.Post;
 import java.util.List;
 
 public class PostService {
-    private final String url;
     private final APIClient<Post> client;
 
     public PostService() {
-        var reader = new PropertiesReader();
-        var host = reader.getProperty("HOST");
-        url = host + "/posts";
-        client = new APIClient<>();
+        client = new APIClient<>("/posts", Post.class);
     }
 
     public List<Post> getAll() {
-        return client.getCall(url, Post.class);
+        return client.getCall();
     }
 
     public Post create(Post post) {
-        return client.postCall(post, url, Post.class);
+        return client.postCall(post);
     }
 
 }
