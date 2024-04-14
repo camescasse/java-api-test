@@ -12,7 +12,7 @@ public class PostsTest {
     }
 
     @Test
-    public void getById_Users_ReturnsUser() {
+    public void getById_Posts_ReturnsPost() {
         var service = new PostService();
         assertThat(service.getById(1)).isNotNull();
     }
@@ -26,4 +26,11 @@ public class PostsTest {
 
         assertThat(newPost.userId()).isEqualTo(post.userId());
     }
+
+    @Test
+    public void deleteById_Posts_ReturnsOk() {
+        var service = new PostService();
+        assertThat(service.delete(1)).isEqualTo(200);
+    }
+
 }

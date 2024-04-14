@@ -12,7 +12,7 @@ public class TodosTest {
     }
 
     @Test
-    public void getById_Users_ReturnsUser() {
+    public void getById_Todos_ReturnsTodo() {
         var service = new TodoService();
         assertThat(service.getById(1)).isNotNull();
     }
@@ -26,4 +26,11 @@ public class TodosTest {
 
         assertThat(newTodo.userId()).isEqualTo(todo.userId());
     }
+
+    @Test
+    public void deleteById_Todos_ReturnsOk() {
+        var service = new TodoService();
+        assertThat(service.delete(1)).isEqualTo(200);
+    }
+
 }

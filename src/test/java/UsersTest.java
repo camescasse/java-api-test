@@ -42,4 +42,11 @@ public class UsersTest {
 
         assertThat(user.id()).isEqualTo(newUser.id());
     }
+
+    @Test
+    public void deleteById_Users_ReturnsOk() {
+        var service = new UserService();
+        assertThat(service.delete(1)).isEqualTo(200);
+    }
+
 }

@@ -23,4 +23,8 @@ public class UserService {
         return client.post(user);
     }
 
+    public int delete(int id) {
+        return client.delete(id);
+    }
+
 }
