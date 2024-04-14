@@ -9,22 +9,22 @@ public class APIClient<T> {
     private final String url;
     private final Class<T> type;
 
-    public APIClient(String endpoint, Class<T> tClass) {
+    public APIClient(String endpoint, Class<T> type) {
         var reader = new PropertiesReader();
         var host = reader.getProperty("HOST");
-        url = host + endpoint;
-        type = tClass;
+        this.url = host + endpoint;
+        this.type = type;
 
     }
 
-    public List<T> getCall() {
+    public List<T> getAll() {
         return get(url)
                 .getBody()
                 .jsonPath()
                 .getList(".", type);
     }
 
-    public T postCall(T body) {
+    public T post(T body) {
         return given()
                 .contentType("application/json")
                 .body(body)

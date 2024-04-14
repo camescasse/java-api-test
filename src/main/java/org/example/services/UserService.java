@@ -12,11 +12,11 @@ public class UserService {
     }
 
     public List<User> getAll() {
-        return client.getCall();
+        return client.getAll();
     }
 
     public User create(User user) {
-        return client.postCall(user);
+        return client.post(user);
     }
 
 }

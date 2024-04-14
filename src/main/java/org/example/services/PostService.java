@@ -12,11 +12,11 @@ public class PostService {
     }
 
     public List<Post> getAll() {
-        return client.getCall();
+        return client.getAll();
     }
 
     public Post create(Post post) {
-        return client.postCall(post);
+        return client.post(post);
     }
 
 }
