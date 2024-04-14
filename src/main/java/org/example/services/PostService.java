@@ -4,33 +4,23 @@ import org.example.models.Post;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.get;
-import static io.restassured.RestAssured.given;
-
 public class PostService {
     private final String url;
+    private final APIClient<Post> client;
 
     public PostService() {
         var reader = new PropertiesReader();
         var host = reader.getProperty("HOST");
         url = host + "/posts";
+        client = new APIClient<>();
     }
 
     public List<Post> getAll() {
-        return get(url)
-                .getBody()
-                .jsonPath()
-                .getList(".", Post.class);
+        return client.getCall(url, Post.class);
     }
 
     public Post create(Post post) {
-        return given()
-                .contentType("application/json")
-                .body(post)
-                .post(url)
-                .getBody()
-                .jsonPath()
-                .getObject(".", Post.class);
+        return client.postCall(post, url, Post.class);
     }
 
 }

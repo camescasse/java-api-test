@@ -4,33 +4,23 @@ import org.example.models.Todo;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.get;
-import static io.restassured.RestAssured.given;
-
 public class TodoService {
     private final String url;
+    private final APIClient<Todo> client;
 
     public TodoService() {
         var reader = new PropertiesReader();
         var host = reader.getProperty("HOST");
         url = host + "/todos";
+        client = new APIClient<>();
     }
 
     public List<Todo> getAll() {
-        return get(url)
-                .getBody()
-                .jsonPath()
-                .getList(".", Todo.class);
+        return client.getCall(url, Todo.class);
     }
 
     public Todo create(Todo todo) {
-        return given()
-                .contentType("application/json")
-                .body(todo)
-                .post(url)
-                .getBody()
-                .jsonPath()
-                .getObject(".", Todo.class);
+        return client.postCall(todo, url, Todo.class);
     }
 
 }
