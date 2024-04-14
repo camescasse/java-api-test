@@ -24,6 +24,13 @@ public class APIClient<T> {
                 .getList(".", type);
     }
 
+    public T getById(int id) {
+        return get(url + "/" + id)
+                .getBody()
+                .jsonPath()
+                .getObject(".", type);
+    }
+
     public T post(T body) {
         return given()
                 .contentType("application/json")
@@ -33,5 +40,4 @@ public class APIClient<T> {
                 .jsonPath()
                 .getObject(".", type);
     }
-
 }

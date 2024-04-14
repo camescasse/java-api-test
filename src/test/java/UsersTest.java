@@ -16,6 +16,12 @@ public class UsersTest {
     }
 
     @Test
+    public void getById_Users_ReturnsUser() {
+        var service = new UserService();
+        assertThat(service.getById(1)).isNotNull();
+    }
+
+    @Test
     public void post_Users_ReturnsCreated() {
         var service = new UserService();
 
