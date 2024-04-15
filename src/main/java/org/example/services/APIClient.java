@@ -10,8 +10,7 @@ public class APIClient<T> {
     private final Class<T> type;
 
     public APIClient(String endpoint, Class<T> type) {
-        var reader = new PropertiesReader();
-        var hostProperty = reader.getProperty("HOST");
+        var hostProperty = PropertiesReader.getInstance().getProperty("HOST");
         String host;
         if (hostProperty == null || hostProperty.isEmpty()) host = "https://jsonplaceholder.typicode.com";
         else host = hostProperty;
