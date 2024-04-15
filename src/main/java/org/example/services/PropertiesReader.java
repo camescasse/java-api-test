@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesReader {
+    private static PropertiesReader instance;
     private final Properties properties;
 
     public PropertiesReader() {
@@ -14,6 +15,13 @@ public class PropertiesReader {
         } catch (IOException e) {
             System.err.println(".properties file not found");
         }
+    }
+
+    public static PropertiesReader getInstance() {
+        if (instance == null) {
+            instance = new PropertiesReader();
+        }
+        return instance;
     }
 
     public String getProperty(String key) {
