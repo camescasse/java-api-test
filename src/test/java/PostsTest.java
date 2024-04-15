@@ -39,6 +39,16 @@ public class PostsTest {
     }
 
     @Test
+    public void patchById_Posts_ReturnsUpdated() {
+        var service = new PostService();
+        var newPost = new Post(null, 15, "mi post fixed", null);
+
+        var updatedPost = service.update(newPost, newPost.id());
+
+        assertThat(newPost.title()).isEqualTo(updatedPost.title());
+    }
+
+    @Test
     public void deleteById_Posts_ReturnsOk() {
         var service = new PostService();
         assertThat(service.delete(1)).isEqualTo(200);
