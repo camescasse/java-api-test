@@ -17,6 +17,16 @@ public class APIClient<T> {
 
     }
 
+    public T post(T body) {
+        return given()
+                .contentType("application/json")
+                .body(body)
+                .post(url)
+                .getBody()
+                .jsonPath()
+                .getObject(".", type);
+    }
+
     public List<T> getAll() {
         return get(url)
                 .getBody()
@@ -31,11 +41,21 @@ public class APIClient<T> {
                 .getObject(".", type);
     }
 
-    public T post(T body) {
+    public T put(T body, int id) {
         return given()
                 .contentType("application/json")
                 .body(body)
-                .post(url)
+                .put(url + "/" + id)
+                .getBody()
+                .jsonPath()
+                .getObject(".", type);
+    }
+
+    public T patch(T body, int id) {
+        return given()
+                .contentType("application/json")
+                .body(body)
+                .patch(url + "/" + id)
                 .getBody()
                 .jsonPath()
                 .getObject(".", type);

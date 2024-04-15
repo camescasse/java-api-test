@@ -1,4 +1,4 @@
 package org.example.models;
 
-public record Post(int userId, int id, String title, String body) {
+public record Post(Integer userId, int id, String title, String body) {
 }

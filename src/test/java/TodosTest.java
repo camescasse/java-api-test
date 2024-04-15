@@ -5,6 +5,17 @@ import org.testng.annotations.Test;
 import static com.google.common.truth.Truth.assertThat;
 
 public class TodosTest {
+
+    @Test
+    public void post_Todos_ReturnsCreated() {
+        var service = new TodoService();
+        var todo = new Todo(3001, 201, "titulote", false);
+
+        var newTodo = service.create(todo);
+
+        assertThat(newTodo.userId()).isEqualTo(todo.userId());
+    }
+
     @Test
     public void getAll_Todos_ReturnsOk() {
         var service = new TodoService();
@@ -18,13 +29,23 @@ public class TodosTest {
     }
 
     @Test
-    public void post_Todos_ReturnsCreated() {
+    public void putById_Todos_ReturnsUpdated() {
         var service = new TodoService();
-        var todo = new Todo(3001, 201, "titulote", false);
+        var newTodo = new Todo(3001, 151, "titulo fixed", false);
 
-        var newTodo = service.create(todo);
+        var updatedTodo = service.override(newTodo, newTodo.id());
 
-        assertThat(newTodo.userId()).isEqualTo(todo.userId());
+        assertThat(newTodo.title()).isEqualTo(updatedTodo.title());
+    }
+
+    @Test
+    public void patchById_Todos_ReturnsUpdated() {
+        var service = new TodoService();
+        var newTodo = new Todo(null, 181, "title fixed", null);
+
+        var updatedTodo = service.update(newTodo, newTodo.id());
+
+        assertThat(newTodo.title()).isEqualTo(updatedTodo.title());
     }
 
     @Test

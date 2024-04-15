@@ -11,6 +11,10 @@ public class TodoService {
         client = new APIClient<>("/todos", Todo.class);
     }
 
+    public Todo create(Todo todo) {
+        return client.post(todo);
+    }
+
     public List<Todo> getAll() {
         return client.getAll();
     }
@@ -19,8 +23,12 @@ public class TodoService {
         return client.getById(id);
     }
 
-    public Todo create(Todo todo) {
-        return client.post(todo);
+    public Todo override(Todo todo, int id) {
+        return client.put(todo, id);
+    }
+
+    public Todo update(Todo todo, int id) {
+        return client.patch(todo, id);
     }
 
     public int delete(int id) {
