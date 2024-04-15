@@ -23,5 +23,5 @@ Create a file in root called `.properties` and copy the key/values from the `exa
 
 | Key    | Description                                                 |
 |--------|-------------------------------------------------------------|
-| `HOST` | Define stage/test environment host. Defaults to production. |
+| `HOST` | Defines stage/test environment host. Defaults to production. |
 
