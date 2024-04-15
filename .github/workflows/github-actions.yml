@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - master
-      - 24-enable-github-actions
   pull_request:
     branches:
       - master
