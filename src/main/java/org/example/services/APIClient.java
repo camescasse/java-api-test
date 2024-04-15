@@ -11,10 +11,12 @@ public class APIClient<T> {
 
     public APIClient(String endpoint, Class<T> type) {
         var reader = new PropertiesReader();
-        var host = reader.getProperty("HOST");
+        var hostProperty = reader.getProperty("HOST");
+        String host;
+        if (hostProperty == null || hostProperty.isEmpty()) host = "https://jsonplaceholder.typicode.com";
+        else host = hostProperty;
         this.url = host + endpoint;
         this.type = type;
-
     }
 
     public T post(T body) {
