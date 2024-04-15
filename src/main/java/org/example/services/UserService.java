@@ -11,6 +11,10 @@ public class UserService {
         client = new APIClient<>("/users", User.class);
     }
 
+    public User create(User user) {
+        return client.post(user);
+    }
+
     public List<User> getAll() {
         return client.getAll();
     }
@@ -19,8 +23,12 @@ public class UserService {
         return client.getById(id);
     }
 
-    public User create(User user) {
-        return client.post(user);
+    public User override(User user, int id) {
+        return client.put(user, id);
+    }
+
+    public User update(User user, int id) {
+        return client.patch(user, id);
     }
 
     public int delete(int id) {

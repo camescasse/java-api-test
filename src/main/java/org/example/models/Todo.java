@@ -1,4 +1,4 @@
 package org.example.models;
 
-public record Todo(int userId, int id, String title, boolean completed){
+public record Todo(Integer userId, int id, String title, Boolean completed){
 }
