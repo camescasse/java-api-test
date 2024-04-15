@@ -15,7 +15,7 @@ website https://jsonplaceholder.typicode.com/.
 
 1. Clone this repository
 2. Navigate to the project directory
-3. Install dependencies found in `pom.xml` using your preferred IDE
+3. Install dependencies found in `pom.xml` using Maven or your preferred IDE
 
 #### Optional:
 
