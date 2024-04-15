@@ -4,11 +4,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class PropertiesReader {
+public final class PropertiesReader {
     private static PropertiesReader instance;
     private final Properties properties;
 
-    public PropertiesReader() {
+    private PropertiesReader() {
         properties = new Properties();
         try (FileInputStream stream = new FileInputStream(".properties")) {
             properties.load(stream);
