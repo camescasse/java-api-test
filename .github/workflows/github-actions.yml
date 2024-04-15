@@ -1,7 +1,5 @@
 name: API Tests
 
-run-name: ${{ github.actor }} is learning GitHub Actions
-
 on:
   push:
     branches:
