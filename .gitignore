@@ -1,7 +1,6 @@
 target/
 .idea/
 .vscode/
-allure-report/
 allure-results/
 
 .properties
