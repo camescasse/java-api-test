@@ -1,0 +1,65 @@
+<div>POST to https://jsonplaceholder.typicode.com/users</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;id&quot;: 11,
+    &quot;name&quot;: &quot;Bill Cartwright&quot;,
+    &quot;username&quot;: &quot;cart11&quot;,
+    &quot;email&quot;: &quot;cart11@gmail.com&quot;,
+    &quot;address&quot;: {
+        &quot;street&quot;: &quot;Tina Prairie&quot;,
+        &quot;suite&quot;: &quot;95772&quot;,
+        &quot;city&quot;: &quot;Alphonse&quot;,
+        &quot;zipcode&quot;: &quot;84683&quot;,
+        &quot;geo&quot;: {
+            &quot;lat&quot;: &quot;-4.5956887&quot;,
+            &quot;lng&quot;: &quot;-138.76742&quot;
+        }
+    },
+    &quot;phone&quot;: &quot;1-477-445-5187&quot;,
+    &quot;website&quot;: &quot;cart11.com&quot;,
+    &quot;company&quot;: {
+        &quot;name&quot;: &quot;Sanford&quot;,
+        &quot;catchPhrase&quot;: &quot;Programmable group&quot;,
+        &quot;bs&quot;: &quot;streamline action-items&quot;
+    }
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://jsonplaceholder.typicode.com/users&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;id&quot;: 11,
+    &quot;name&quot;: &quot;Bill Cartwright&quot;,
+    &quot;username&quot;: &quot;cart11&quot;,
+    &quot;email&quot;: &quot;cart11@gmail.com&quot;,
+    &quot;address&quot;: {
+        &quot;street&quot;: &quot;Tina Prairie&quot;,
+        &quot;suite&quot;: &quot;95772&quot;,
+        &quot;city&quot;: &quot;Alphonse&quot;,
+        &quot;zipcode&quot;: &quot;84683&quot;,
+        &quot;geo&quot;: {
+            &quot;lat&quot;: &quot;-4.5956887&quot;,
+            &quot;lng&quot;: &quot;-138.76742&quot;
+        }
+    },
+    &quot;phone&quot;: &quot;1-477-445-5187&quot;,
+    &quot;website&quot;: &quot;cart11.com&quot;,
+    &quot;company&quot;: {
+        &quot;name&quot;: &quot;Sanford&quot;,
+        &quot;catchPhrase&quot;: &quot;Programmable group&quot;,
+        &quot;bs&quot;: &quot;streamline action-items&quot;
+    }
+}&#39;
+    </div>
+
