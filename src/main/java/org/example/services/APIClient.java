@@ -1,25 +1,31 @@
 package org.example.services;
 
+import io.qameta.allure.restassured.AllureRestAssured;
+
 import java.util.List;
 
-import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
 public class APIClient<T> {
     private final String url;
     private final Class<T> type;
+    private final AllureRestAssured allure;
 
     public APIClient(String endpoint, Class<T> type) {
         var hostProperty = PropertiesReader.getInstance().getProperty("HOST");
         String host;
         if (hostProperty == null || hostProperty.isEmpty()) host = "https://jsonplaceholder.typicode.com";
         else host = hostProperty;
+        this.allure = new AllureRestAssured()
+                .setRequestTemplate("http-request.ftl")
+                .setResponseTemplate("http-response.ftl");
         this.url = host + endpoint;
         this.type = type;
     }
 
     public T post(T body) {
         return given()
+                .filter(allure)
                 .contentType("application/json")
                 .body(body)
                 .post(url)
@@ -29,14 +35,18 @@ public class APIClient<T> {
     }
 
     public List<T> getAll() {
-        return get(url)
+        return given()
+                .filter(allure)
+                .get(url)
                 .getBody()
                 .jsonPath()
                 .getList(".", type);
     }
 
     public T getById(int id) {
-        return get(url + "/" + id)
+        return given()
+                .filter(allure)
+                .get(url + "/" + id)
                 .getBody()
                 .jsonPath()
                 .getObject(".", type);
@@ -44,6 +54,7 @@ public class APIClient<T> {
 
     public T put(T body, int id) {
         return given()
+                .filter(allure)
                 .contentType("application/json")
                 .body(body)
                 .put(url + "/" + id)
@@ -54,6 +65,7 @@ public class APIClient<T> {
 
     public T patch(T body, int id) {
         return given()
+                .filter(allure)
                 .contentType("application/json")
                 .body(body)
                 .patch(url + "/" + id)
@@ -64,7 +76,9 @@ public class APIClient<T> {
 
     public int delete(int id) {
         return given()
-                .delete(url + "/" + id).getStatusCode();
+                .filter(allure)
+                .delete(url + "/" + id)
+                .getStatusCode();
     }
 
 }
