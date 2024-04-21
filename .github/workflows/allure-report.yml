@@ -1,11 +1,7 @@
-name: API Tests
+name: Allure Report
 
 on:
   push:
-    branches:
-      - master
-      - 33-add-logging-with-allure-reports
-  pull_request:
     branches:
       - master
 
