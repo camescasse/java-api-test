@@ -5,6 +5,8 @@ API Automation project written in Java, using RestAssured and TestNG.
 Tests CRUD operations for the
 website https://jsonplaceholder.typicode.com/.
 
+Test runs tracked with Allure Reports. See report at https://camescasse.github.io/java-api-test/.
+
 ## Getting Started
 
 ### Prerequisites
