@@ -1,0 +1,65 @@
+<div>PUT to https://jsonplaceholder.typicode.com/users/6</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;id&quot;: 6,
+    &quot;name&quot;: &quot;John Vanderbilt&quot;,
+    &quot;username&quot;: &quot;johnv18&quot;,
+    &quot;email&quot;: &quot;johnv18@gmail.com&quot;,
+    &quot;address&quot;: {
+        &quot;street&quot;: &quot;Mark Twain&quot;,
+        &quot;suite&quot;: &quot;66428&quot;,
+        &quot;city&quot;: &quot;Margarita&quot;,
+        &quot;zipcode&quot;: &quot;49875&quot;,
+        &quot;geo&quot;: {
+            &quot;lat&quot;: &quot;-24.5956887&quot;,
+            &quot;lng&quot;: &quot;-42.61542&quot;
+        }
+    },
+    &quot;phone&quot;: &quot;1-887-355-1867&quot;,
+    &quot;website&quot;: &quot;johnv18.com&quot;,
+    &quot;company&quot;: {
+        &quot;name&quot;: &quot;North Galaxy&quot;,
+        &quot;catchPhrase&quot;: &quot;One individual&quot;,
+        &quot;bs&quot;: &quot;simple motives&quot;
+    }
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X PUT &#39;https://jsonplaceholder.typicode.com/users/6&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;id&quot;: 6,
+    &quot;name&quot;: &quot;John Vanderbilt&quot;,
+    &quot;username&quot;: &quot;johnv18&quot;,
+    &quot;email&quot;: &quot;johnv18@gmail.com&quot;,
+    &quot;address&quot;: {
+        &quot;street&quot;: &quot;Mark Twain&quot;,
+        &quot;suite&quot;: &quot;66428&quot;,
+        &quot;city&quot;: &quot;Margarita&quot;,
+        &quot;zipcode&quot;: &quot;49875&quot;,
+        &quot;geo&quot;: {
+            &quot;lat&quot;: &quot;-24.5956887&quot;,
+            &quot;lng&quot;: &quot;-42.61542&quot;
+        }
+    },
+    &quot;phone&quot;: &quot;1-887-355-1867&quot;,
+    &quot;website&quot;: &quot;johnv18.com&quot;,
+    &quot;company&quot;: {
+        &quot;name&quot;: &quot;North Galaxy&quot;,
+        &quot;catchPhrase&quot;: &quot;One individual&quot;,
+        &quot;bs&quot;: &quot;simple motives&quot;
+    }
+}&#39;
+    </div>
+
